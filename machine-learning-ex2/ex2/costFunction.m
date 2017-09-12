@@ -19,13 +19,17 @@ grad = zeros(size(theta));
 %
 % Note: grad should have the same dimensions as theta
 %
+%X
+%theta
+   Hth = sigmoid(X*theta);
+   term1 = ((-y)')*(log(Hth));
+   term2 = ((-y.+1)')*((log((-Hth).+1)));
+   SigMega= term1-term2
+   J = sum(term1-term2)/m
 
-
-
-
-
-
-
+   C = Hth - y;
+   D = (C'*X)';
+   grad = D/m;   
 
 % =============================================================
 
